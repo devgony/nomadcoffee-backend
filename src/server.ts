@@ -3,8 +3,8 @@ import { ApolloServer } from "apollo-server";
 import { typeDefs, resolvers } from "./schema";
 
 const server = new ApolloServer({
-  typeDefs,
   resolvers,
+  typeDefs,
 });
 
 const PORT = process.env.PORT;

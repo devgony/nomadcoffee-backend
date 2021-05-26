@@ -11,6 +11,12 @@ generator client {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
+  id             Int     @id @default(autoincrement())
+  username       String  @unique
+  email          String  @unique
+  name           String
+  location       String
+  password       String
+  avatarURL      String?
+  githubUsername String?
 }
