@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "start": "node server.js",
     "dev": "nodemon --exec ts-node src/server --ext ts,js",
     "migrate": "npx prisma migrate dev --preview-feature",
     "studio": "npx prisma studio",
-    "mo-re": "sh -c 'mkdir src/$0/$1 & touch src/$0/$1/$1.typeDefs.ts & touch src/$0/$1/$1.resolvers.ts'",
-    "mo": "sh -c 'mkdir src/$0 & touch src/$0/$0.typeDefs.ts & touch src/$0/$0.resolvers.ts'"
+    "mo-re": "sh -c '[ ${#1} == 0 ] && echo Error: Please give 2nd arg || (mkdir src/$0/$1 && touch src/$0/$1/$1.typeDefs.ts && touch src/$0/$1/$1.resolvers.ts)'",
+    "mo": "sh -c 'mkdir src/$0 && touch src/$0/$0.typeDefs.ts && touch src/$0/$0.resolvers.ts'"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,13 @@
   "dependencies": {
     "@prisma/client": "^2.23.0",
     "apollo-server": "^2.24.1",
+    "apollo-server-express": "^2.24.1",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "graphql": "^15.5.0",
-    "graphql-tools": "^7.0.5"
+    "graphql-tools": "^7.0.5",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
@@ -37,5 +41,9 @@
     "prisma": "^2.23.0",
     "ts-node": "^10.0.0",
     "typescript": "^4.2.4"
+  },
+  "resolutions": {
+    "fs-capacitor": "^6.2.0",
+    "graphql-upload": "^11.0.0"
   }
 }

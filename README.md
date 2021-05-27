@@ -36,3 +36,13 @@
 ✅ Check that the username / email aren't taken
 ✅ Return ok:true or ok:false, error:$error if there is an error.
 ```
+
+## Day4-User Profile
+
+### Now it's time to create the following resolvers:
+
+```
+✅ login: Log the user in by returning a JWT or return an error in case the password is wrong.
+✅ seeProfile: See any users profile.
+✅ editProfile: Change the user's profile, this includes changing password and changing the avatarURL.
+```

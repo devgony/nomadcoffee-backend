@@ -33,7 +33,7 @@ export default {
         });
         return { ok: true };
       } catch (error) {
-        console.log(error);
+        console.log(__filename, "\n", error);
         return { ok: false, error: "Could not create account." };
       }
     },
