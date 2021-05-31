@@ -37,7 +37,7 @@
 ✅ Return ok:true or ok:false, error:$error if there is an error.
 ```
 
-## Day4-User Profile
+## Day4-User Profile(2d)
 
 ### Now it's time to create the following resolvers:
 
@@ -45,4 +45,13 @@
 ✅ login: Log the user in by returning a JWT or return an error in case the password is wrong.
 ✅ seeProfile: See any users profile.
 ✅ editProfile: Change the user's profile, this includes changing password and changing the avatarURL.
+```
+
+## Day8-Follow Me!(1d)
+
+```
+✅ Implement Follow / Unfollow functionality.
+✅ Implement followers & following computed fields with pagination on the seeUser resolver (No extra resolvers).
+✅ Implement searchUsers resolver.
+🎁 Bonus: Pagination is Implemented at `searchUsers` resolver as well.
 ```
