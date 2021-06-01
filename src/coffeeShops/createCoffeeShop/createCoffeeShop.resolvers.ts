@@ -20,9 +20,11 @@ export default {
               error: "That coffee shop name already exists.",
             };
           }
-          const photoObjs = photos.map(photo => ({
-            url: uploadFile(loggedInUser.id, photo),
-          }));
+          const photoObjs: { url: string }[] = await Promise.all(
+            photos.map(async photo => ({
+              url: await uploadFile(loggedInUser.id, photo),
+            }))
+          );
           const categoryObjs = categories.map(category => {
             const slug = category.trim().toLowerCase().replace(/\s/g, "-");
             return {
@@ -30,7 +32,6 @@ export default {
               create: { name: category, slug },
             };
           });
-          console.log(photoObjs);
           await client.coffeeShop.create({
             data: {
               name,

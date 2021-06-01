@@ -2,6 +2,13 @@
 
 > An app where developers can go and find the best caffes to work from in 한국!!
 
+## Bonus Todo ⌛️
+
+```
+⌛️ Add uploading photo at `createAccount`
+⌛️ Create `editCoffeeShopPhoto` to edit each photo of CoffeeShop
+```
+
 ## Day1-Set Up(2d)
 
 ### On this two day assignment we will set up our project.
