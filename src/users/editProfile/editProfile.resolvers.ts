@@ -1,6 +1,7 @@
 import { createWriteStream } from "fs";
 import * as bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
+import { uploadFile } from "../../shared/shared.utils";
 
 export default {
   Mutation: {
@@ -20,14 +21,15 @@ export default {
         try {
           let avatarPath = null;
           if (avatarURL) {
-            const { filename, createReadStream } = await avatarURL;
-            const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
-            const readStream = createReadStream();
-            const writeStream = createWriteStream(
-              `${process.cwd()}/uploads/${newFilename}`
-            );
-            readStream.pipe(writeStream);
-            avatarPath = `http://localhost:4000/static/${newFilename}`;
+            // const { filename, createReadStream } = await avatarURL;
+            // const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+            // const readStream = createReadStream();
+            // const writeStream = createWriteStream(
+            //   `${process.cwd()}/uploads/${newFilename}`
+            // );
+            // readStream.pipe(writeStream);
+            // avatarPath = `http://localhost:4000/static/${newFilename}`;
+            avatarPath = uploadFile(loggedInUser.id, avatarURL);
           }
           let hashedPassword = null;
           if (newPassword) {
