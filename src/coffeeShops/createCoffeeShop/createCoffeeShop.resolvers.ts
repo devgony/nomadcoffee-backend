@@ -1,6 +1,6 @@
 import {
   namesToCategoryObjsWithSlug,
-  uploadFile,
+  uploadToS3,
 } from "../../shared/shared.utils";
 import { Context } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
@@ -25,7 +25,7 @@ export default {
           }
           const photoObjs: { url: string }[] = await Promise.all(
             photos.map(async photo => ({
-              url: await uploadFile(loggedInUser.id, photo),
+              url: await uploadToS3(photo, loggedInUser.id, "photos"),
             }))
           );
           const categoryObjs = namesToCategoryObjsWithSlug(categories);

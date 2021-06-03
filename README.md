@@ -7,6 +7,7 @@
 ```
 ⌛️ Add uploading photo at `createAccount`
 ⌛️ Create `editCoffeeShopPhoto` to edit each photo of CoffeeShop
+⌛️ Upload file at `createAccount.avatar`
 ```
 
 ## Day1-Set Up(2d)
@@ -84,4 +85,11 @@
 ✅ seeCategory should list all the CoffeeShop inside of a Category with pagination.
 ✅ seeCategories should list all the Category and should have a totalShops computed field that counts all the CoffeeShop inside of the Category, it should also have pagination
 ✅ editCoffeeShop should edit a CoffeeShop
+```
+
+## Day11-Heroku!(1d)
+
+```
+✅ Deploy your backend to Heroku.
+✅ Configure a PostgreSQL Database.
 ```

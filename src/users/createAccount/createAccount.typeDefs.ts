@@ -12,7 +12,4 @@ export default gql`
       githubUsername: String
     ): MutationResponse!
   }
-  type Query { # handle Error: Query root type must be provided.
-    dummy: String
-  }
 `;

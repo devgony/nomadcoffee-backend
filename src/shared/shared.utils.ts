@@ -1,17 +1,5 @@
 import { createWriteStream } from "fs";
-
-export const uploadFile = async (ownerId, upload) => {
-  // let filename, createReadStream;
-  // const { filename, createReadStream }: any = (async () => await upload)();
-  const { filename, createReadStream } = await upload;
-  const newFilename = `${ownerId}-${Date.now()}-${filename}`;
-  const readStream = createReadStream();
-  const writeStream = createWriteStream(
-    `${process.cwd()}/uploads/${newFilename}`
-  );
-  readStream.pipe(writeStream);
-  return `http://localhost:4000/static/${newFilename}`;
-};
+import * as AWS from "aws-sdk";
 
 export const namesToCategoryObjsWithSlug = categories =>
   categories.map(category => {
@@ -21,3 +9,25 @@ export const namesToCategoryObjsWithSlug = categories =>
       create: { name: category, slug },
     };
   });
+
+AWS.config.update({
+  credentials: {
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_SECRET,
+  },
+});
+
+export const uploadToS3 = async (file, userId, folderName) => {
+  const { filename, createReadStream } = await file;
+  const readStream = createReadStream();
+  const objectName = `${folderName}/${userId}-${Date.now()}-${filename}`;
+  const { Location } = await new AWS.S3()
+    .upload({
+      Bucket: "nomadcoffee-backend-henry",
+      Key: objectName,
+      ACL: "public-read",
+      Body: readStream,
+    })
+    .promise();
+  return Location;
+};
