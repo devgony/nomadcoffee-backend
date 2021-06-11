@@ -1,12 +1,17 @@
+import { PAGE_SIZE } from "../../constants";
 import { Context } from "../../types";
 
 export default {
   Query: {
-    seeCoffeeShops: (_, { page }, { client }: Context) =>
-      client.coffeeShop.findMany({
-        take: 5,
-        skip: (page - 1) * 5,
-        include: { photos: true, categories: true },
-      }),
+    seeCoffeeShops: async (_, { page }, { client }: Context) => {
+      const coffeeShops = await client.coffeeShop.findMany({
+        take: PAGE_SIZE,
+        skip: (page - 1) * PAGE_SIZE,
+        include: { photos: true, categories: true, user: true },
+      });
+      const totalCoffeeShop = await client.coffeeShop.count();
+      const maxPage = Math.ceil(totalCoffeeShop / 6);
+      return { coffeeShops, maxPage };
+    },
   },
 };
