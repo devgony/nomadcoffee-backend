@@ -7,6 +7,6 @@ export default {
   },
   CoffeeShop: {
     isMine: ({ user }, _, { loggedInUser }: Context) =>
-      loggedInUser.id === user.id,
+      loggedInUser?.id === user.id,
   },
 };

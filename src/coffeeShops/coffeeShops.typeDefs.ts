@@ -7,7 +7,7 @@ export default gql`
     latitude: String!
     longitude: String!
     user: User!
-    photos: [CoffeeShopPhoto]
+    photos: [CoffeeShopPhoto!]!
     categories: [Category]
     isMine: Boolean!
   }
@@ -22,7 +22,7 @@ export default gql`
 
   type CoffeeShopPhoto {
     id: Int!
-    url: String
+    url: String!
     shop: CoffeeShop
   }
 `;

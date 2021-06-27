@@ -5,7 +5,7 @@ export default {
     seeCoffeeShop: (_, { id }, { client }: Context) =>
       client.coffeeShop.findUnique({
         where: { id },
-        include: { photos: true, categories: true },
+        include: { photos: true, categories: true, user: true },
       }),
   },
 };
