@@ -29,7 +29,7 @@ export default {
             }))
           );
           const categoryObjs = namesToCategoryObjsWithSlug(categories);
-          await client.coffeeShop.create({
+          const newCoffeeShop = await client.coffeeShop.create({
             data: {
               name,
               latitude,
@@ -47,7 +47,7 @@ export default {
               },
             },
           });
-          return { ok: true };
+          return { ok: true, id: newCoffeeShop.id };
         } catch (error) {
           console.log(__filename, "<=\n", error);
           return { ok: false, error: "Could not create coffeeShop" };
