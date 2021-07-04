@@ -46,8 +46,9 @@ export default {
                 connectOrCreate: categoryObjs,
               },
             },
+            include: { photos: true, categories: true, user: true },
           });
-          return { ok: true, id: newCoffeeShop.id };
+          return newCoffeeShop;
         } catch (error) {
           console.log(__filename, "<=\n", error);
           return { ok: false, error: "Could not create coffeeShop" };

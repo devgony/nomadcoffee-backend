@@ -8,7 +8,7 @@ interface Props {
 
 export default {
   Query: {
-    searchCoffeeShops: async (
+    searchMyCoffeeShops: async (
       _,
       { searchType, keyword, offset }: Props,
       { client, loggedInUser }: Context
